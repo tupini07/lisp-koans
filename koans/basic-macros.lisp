@@ -71,9 +71,9 @@
     (flet ((cartoon-dads (input)
              (case input
                ;; Fill in the blanks with proper cases.
-               ____
-               ____
-               ____
+               (:bart :homer)
+               (:stewie :peter)
+               (:stan :randy)
                (:this-one-doesnt-happen :fancy-cat)
                (t :unknown))))
       (assert-equal (cartoon-dads :bart) :homer)
@@ -91,14 +91,14 @@
            (string-copy (copy-seq string)))
       ;; The above means that two distinct strings will not be the same under EQL,
       ;; even if they have the same contents.
-      (true-or-false? ____ (eql string string-copy))
-      (true-or-false? ____ (equal string string-copy))
+      (true-or-false? nil (eql string string-copy))
+      (true-or-false? t (equal string string-copy))
       ;; The above also means that CASE might give surprising results when used on
       ;; strings.
       (let ((match (case string
                      ("A string" :matched)
                      (t :not-matched))))
-        (assert-equal ____ match))
+        (assert-equal :not-matched match))
       ;; We will explore this topic further in the EQUALITY-DISTINCTIONS lesson.
       ))
 
@@ -109,4 +109,4 @@
            (result (cond ((> number 0) :positive)
                          ((< number 0) :negative)
                          (t :zero))))
-      (assert-equal ____ result)))
+      (assert-equal :positive result)))
