@@ -40,5 +40,6 @@ fi
 
 $CONTEMPLATE
 while inotifywait -e modify --exclude "\#.*\#" -q -r koans; do
+    clear
     $CONTEMPLATE
 done
